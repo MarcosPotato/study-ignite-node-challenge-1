@@ -6,10 +6,7 @@ interface TaskDTO{
 }
 
 export class TaskRepositories {
-
-    constructor(
-        private tasks: Task[]
-    ){}
+    private tasks: Task[] = []
 
     async createNewTask({ description, title }: TaskDTO): Promise<void> {
         const newTask = new Task()
@@ -27,6 +24,14 @@ export class TaskRepositories {
 
     async getAllTask(): Promise<Task[]> {
         return this.tasks
+    }
+
+    async findTaskById(taskId: string): Promise<Task | undefined> {
+        return this.tasks.find(task => task.id === taskId)
+    }
+
+    async findTaskByTitle(title: string): Promise<Task | undefined> {
+        return this.tasks.find(task => task.title === title)
     }
 
     async updateTask(taskId: string, data: TaskDTO): Promise<void> {
