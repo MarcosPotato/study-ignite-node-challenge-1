@@ -36,7 +36,12 @@ export class TaskRepositories {
 
     async updateTask(taskId: string, data: TaskDTO): Promise<void> {
         this.tasks = this.tasks.map(task => task.id === taskId 
-            ? { ...task, ...data, id: task.id, updated_at: new Date() }
+            ? { 
+                ...task, 
+                title: data.title ? data.title : task.title,
+                description: data.description ? data.description : task.description,  
+                updated_at: new Date() 
+            }
             : task
         )
     }

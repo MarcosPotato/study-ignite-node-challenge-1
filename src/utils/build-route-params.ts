@@ -5,4 +5,4 @@ export function buildRoutePath(path: string): RegExp {
     const pathRegex = new RegExp(`^${paramsWithParams}(?<query>\\?(.*))?$`)
   
     return pathRegex
-  }
+}

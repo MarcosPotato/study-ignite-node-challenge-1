@@ -15,5 +15,20 @@ export const routes: Route[] = [
         method: "GET",
         url: buildRoutePath("/task"),
         action: (req: Request, res: Response) => TaskController.index(req, res, taskRepository)
+    },
+    {
+        method: "PUT",
+        url: buildRoutePath("/task/:id"),
+        action: (req: Request, res: Response) => TaskController.update(req, res, taskRepository)
+    },
+    {
+        method: "DELETE",
+        url: buildRoutePath("/task/:id"),
+        action: (req: Request, res: Response) => TaskController.delete(req, res, taskRepository)
+    },
+    {
+        method: "PATCH",
+        url: buildRoutePath("/task/:id/complete"),
+        action: (req: Request, res: Response) => TaskController.patch(req, res, taskRepository)
     }
 ]

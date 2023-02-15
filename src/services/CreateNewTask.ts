@@ -15,6 +15,10 @@ export class CreateNewTaskService{
             throw new Error("This task title is already in use")
         }
 
+        if(!title || !description){
+            throw new Error("Missing atributes title/description")
+        }
+
         await this.taskRepository.createNewTask({
             description,
             title
