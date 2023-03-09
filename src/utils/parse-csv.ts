@@ -12,7 +12,10 @@ const csvParse = parse({
   fromLine: 2
 })
 
-export const parseCSV = async({ onReadFile, path }: ParseCSVParams) => {
+export const parseCSV = async({ 
+  path, 
+  onReadFile
+}: ParseCSVParams) => {
   const stream = fs.createReadStream(path)
   
   const linesParse = stream.pipe(csvParse)
